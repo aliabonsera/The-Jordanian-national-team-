@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Nashama — Jordan National Football Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --red-light: #F5E8EB;
+    --gold: #B8953C;
+    --gold-light: #F5F0E8;
+    --white: #FFFFFF;
+    --off-white: #FAFAFA;
+    --gray-100: #F4F4F4;
+    --gray-200: #E8E8E8;
+    --gray-400: #9A9A9A;
+    --gray-600: #555555;
+    --dark: #111111;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-arabic: 'Tajawal', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  body[lang="ar"] {
+    font-family: var(--font-arabic);
+    direction: rtl;
+  }
+
+  [data-en], [data-ar] { transition: opacity 0.25s ease; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo .star {
+    width: 28px;
+    height: 28px;
+    fill: var(--red);
+  }
+
+  .nav-logo-text {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--dark);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--gray-600);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--red); }
+
+  .lang-btn {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .lang-btn:hover { background: var(--red-dark); transform: scale(1.04); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--dark);
+    background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 54px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 5vw 60px;
+  }
+
+  /* Geometric red background graphic */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    right: -8vw;
+    top: -10vh;
+    width: 55vw;
+    height: 120vh;
+    background: var(--red);
+    clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 0.93;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    right: 28vw;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* Large watermark "1921" (Jordan founded year) */
+  .hero-watermark {
+    position: absolute;
+    bottom: -2vh;
+    left: 3vw;
+    font-family: var(--font-display);
+    font-size: clamp(100px, 18vw, 260px);
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -0.02em;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6vw;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-left { max-width: 540px; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 26px;
+    padding: 7px 18px;
+    border: 1px solid rgba(184,149,60,0.32);
+    border-radius: 100px;
+    background: linear-gradient(90deg, rgba(184,149,60,0.1), rgba(184,149,60,0.02));
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s forwards;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    box-shadow: 0 0 10px 1px rgba(184,149,60,0.7);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 32px rgba(0,0,0,0.35);
+    opacity: 0;
+    animation: fadeUp 0.7s 0.35s forwards;
+  }
+
+  .hero-title .accent { color: var(--red); }
+
+  body[lang="ar"] .hero-title {
+    font-size: clamp(2.5rem, 5.5vw, 5rem);
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2.2vw, 1.6rem);
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.5s forwards;
+    font-style: italic;
+  }
+
+  .hero-divider {
+    width: 54px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 26px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.58s forwards;
+  }
+
+  body[lang="ar"] .hero-divider {
+    background: linear-gradient(270deg, var(--gold), transparent);
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.65s forwards;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.8s forwards;
+  }
+
+  .stat-cell {
+    padding: 20px 16px;
+    background: rgba(255,255,255,0.03);
+    text-align: center;
+    position: relative;
+  }
+
+  .stat-cell::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0.55;
+  }
+
+  .stat-cell:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.08); }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 1s 0.6s forwards;
+  }
+
+  /* SVG Jordan emblem */
+  .emblem-wrap {
+    position: relative;
+    width: clamp(220px, 30vw, 380px);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .emblem-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(200,16,46,0.25);
+    animation: pulseRing 3s ease-in-out infinite;
+  }
+
+  .emblem-ring:nth-child(2) {
+    inset: 16px;
+    border-color: rgba(184,149,60,0.35);
+    animation-delay: 0.5s;
+  }
+
+  .emblem-ring:nth-child(3) {
+    inset: 32px;
+    border-color: rgba(200,16,46,0.08);
+    animation-delay: 1s;
+  }
+
+  .emblem-core {
+    position: relative;
+    z-index: 2;
+    width: 60%;
+    aspect-ratio: 1;
+    background: radial-gradient(circle at 35% 28%, rgba(200,16,46,0.22), rgba(200,16,46,0.08) 70%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(184,149,60,0.55);
+    box-shadow: 0 0 36px rgba(200,16,46,0.22), inset 0 0 22px rgba(255,255,255,0.04);
+  }
+
+  .emblem-star-svg {
+    width: 55%;
+    height: 55%;
+    fill: var(--red);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 12px rgba(200,16,46,0.6));
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 96px 5vw; }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 48px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 48px;
+  }
+
+  /* ── TIMELINE ── */
+  #achievements { background: var(--off-white); }
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  body[lang="ar"] .timeline {
+    padding-left: 0;
+    padding-right: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--red), var(--red-light));
+  }
+
+  body[lang="ar"] .timeline::before {
+    left: auto;
+    right: 0;
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .tl-item.visible { opacity: 1; transform: translateY(0); }
+
+  .tl-dot {
+    position: absolute;
+    left: -39px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--red);
+    border: 3px solid var(--off-white);
+    box-shadow: 0 0 0 2px var(--red);
+  }
+
+  body[lang="ar"] .tl-dot {
+    left: auto;
+    right: -39px;
+  }
+
+  .tl-year {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .tl-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .tl-body {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--gray-600);
+    max-width: 700px;
+  }
+
+  .tl-badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 14px;
+    background: var(--red-light);
+    color: var(--red);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── PLAYERS / PITCH ── */
+  #squad { background: var(--white); }
+
+  .pitch-wrap {
+    background: linear-gradient(175deg, #1a4a1e 0%, #1e5523 30%, #1a4a1e 60%, #163d19 100%);
+    border-radius: 20px;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Pitch lines */
+  .pitch-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .pitch-lines svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+  }
+
+  .pitch-formation-label {
+    text-align: center;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .pitch-row {
+    display: flex;
+    justify-content: center;
+    gap: clamp(8px, 2vw, 28px);
+    margin-bottom: clamp(18px, 2.5vw, 32px);
+  }
+
+  .player-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .player-card.visible { opacity: 1; transform: translateY(0); }
+
+  .player-circle {
+    width: clamp(52px, 7vw, 72px);
+    height: clamp(52px, 7vw, 72px);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    font-weight: 900;
+    color: white;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+    position: relative;
+  }
+
+  .player-circle.captain {
+    border-color: var(--gold);
+    background: rgba(184, 149, 60, 0.15);
+  }
+
+  .captain-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 18px;
+    height: 18px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 900;
+    color: white;
+  }
+
+  .player-card:hover .player-circle {
+    background: rgba(200,16,46,0.4);
+    border-color: var(--red);
+    transform: scale(1.1);
+  }
+
+  .player-name {
+    text-align: center;
+    color: rgba(255,255,255,0.9);
+    font-size: clamp(0.58rem, 0.9vw, 0.75rem);
+    font-weight: 600;
+    line-height: 1.3;
+    max-width: clamp(64px, 9vw, 90px);
+  }
+
+  .player-pos {
+    font-size: clamp(0.52rem, 0.75vw, 0.65rem);
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  /* Player detail cards below pitch */
+  .player-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .pcard {
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    padding: 20px 22px;
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s, transform 0.5s, border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .pcard.visible { opacity: 1; transform: translateY(0); }
+  .pcard:hover { border-color: var(--red); box-shadow: 0 4px 24px rgba(200,16,46,0.08); }
+
+  .pcard-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .pcard-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+    min-width: 36px;
+    opacity: 0.25;
+  }
+
+  .pcard-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+
+  .pcard-pos-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    background: var(--red-light);
+    color: var(--red);
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .pcard-club {
+    font-size: 0.8rem;
+    color: var(--gray-400);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pcard-club::before {
+    content: '⚽';
+    font-size: 0.7rem;
+  }
+
+  /* ── COACH ── */
+  #coach { background: var(--dark); color: white; }
+
+  #coach .section-title { color: white; }
+
+  .coach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .coach-card-visual {
+    background: rgba(200,16,46,0.08);
+    border: 1px solid rgba(200,16,46,0.2);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .coach-card-visual::before {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(200,16,46,0.06);
+    pointer-events: none;
+  }
+
+  .coach-initials {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: white;
+    margin: 0 auto 20px;
+    letter-spacing: 0.04em;
+  }
+
+  .coach-fullname {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 6px;
+  }
+
+  .coach-title-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(200,16,46,0.2);
+    border: 1px solid rgba(200,16,46,0.35);
+    color: var(--red);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .coach-mini-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .cms-cell {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 14px 8px;
+  }
+
+  .cms-val {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--red);
+  }
+
+  .cms-lbl {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  .coach-bio { }
+
+  .coach-bio p {
+    font-size: 0.93rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 18px;
+  }
+
+  .coach-achievements {
+    list-style: none;
+    margin-top: 28px;
+  }
+
+  .coach-achievements li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+
+  .coach-achievements li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  /* ── WORLD CUP BANNER ── */
+  #worldcup {
+    background: var(--red);
+    padding: 72px 5vw;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #worldcup::before {
+    content: '2026';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(120px, 22vw, 280px);
+    font-weight: 900;
+    color: rgba(255,255,255,0.05);
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .wc-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+  }
+
+  .wc-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .wc-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .wc-group-box {
+    display: inline-flex;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .wc-group-item {
+    padding: 14px 24px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.06em;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    background: rgba(0,0,0,0.15);
+    transition: background 0.2s;
+  }
+
+  .wc-group-item:last-child { border-right: none; }
+  .wc-group-item.highlight { background: rgba(0,0,0,0.35); color: white; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0A0A;
+    padding: 56px 5vw 40px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 40px;
+  }
+
+  .footer-left { }
+
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 6px;
+  }
+
+  .footer-tagline {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-credit {
+    text-align: right;
+    font-size: 0.78rem;
+  }
+
+  .credit-label {
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 6px;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .credit-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.02em;
+  }
+
+  .credit-sub {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.2);
+    margin-top: 2px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes pulseRing {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.04); opacity: 0.5; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .hero-content { grid-template-columns: 1fr; gap: 40px; }
+    .hero-right { order: -1; }
+    .emblem-wrap { width: clamp(140px, 45vw, 200px); }
+    .coach-grid { grid-template-columns: 1fr; gap: 36px; }
+    .nav-links { display: none; }
+    .hero-stats { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 64px 6vw; }
+    #hero { padding: 86px 6vw 48px; }
+    .hero-desc { font-size: 0.9rem; }
+    .pitch-wrap { padding: 26px 14px; }
+    .pitch-row { gap: clamp(10px, 4vw, 20px); }
+    .coach-card-visual { padding: 28px 18px; }
+    .coach-mini-stats { gap: 8px; }
+    .wc-sub { font-size: 0.92rem; }
+    .nav-logo-text { font-size: 1rem; }
+    nav { padding: 0 4vw; height: 58px; }
+    .hero-watermark { bottom: 0; opacity: 0.025; }
+  }
+
+  @media (max-width: 520px) {
+    .hero-stats { grid-template-columns: 1fr; }
+    .stat-cell:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .stat-cell::before { width: 2px; height: auto; top:0; bottom:0; left:0; right:auto; background: linear-gradient(180deg, var(--gold), transparent); }
+    .player-grid { grid-template-columns: 1fr 1fr; }
+    .wc-group-box { flex-direction: column; }
+    .wc-group-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .footer-inner { flex-direction: column; }
+    .footer-credit { text-align: left; }
+  }
+
+  @media (max-width: 400px) {
+    .hero-title { font-size: clamp(2.4rem, 11vw, 3.2rem); }
+    body[lang="ar"] .hero-title { font-size: clamp(2.1rem, 10vw, 3rem); }
+    .player-grid { grid-template-columns: 1fr; }
+    .pcard { padding: 16px 18px; }
+    .coach-mini-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Arabic overrides */
+  body[lang="ar"] .section-eyebrow::after {
+    /* flip direction handled by RTL */
+  }
+
+  body[lang="ar"] .hero-eyebrow::before {
+    order: 2;
+  }
+
+  body[lang="ar"] .coach-achievements li::before {
+    margin-top: 7px;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body lang="en">
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <svg class="star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C8102E"/>
+    </svg>
+    <span class="nav-logo-text" data-en="Al Nashama" data-ar="النشامى"></span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#achievements" data-en="History" data-ar="التاريخ"></a></li>
+      <li><a href="#squad" data-en="Squad" data-ar="التشكيلة"></a></li>
+      <li><a href="#coach" data-en="Coach" data-ar="المدرب"></a></li>
+      <li><a href="#worldcup" data-en="World Cup" data-ar="كأس العالم"></a></li>
+    </ul>
+    <button class="lang-btn" id="langToggle">عربي</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-watermark">1921</div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <span class="hero-eyebrow" data-en="The Hashemite Kingdom of Jordan" data-ar="المملكة الأردنية الهاشمية"></span>
+      <h1 class="hero-title" data-en="Al&nbsp;<span class='accent'>Nashama</span>" data-ar="<span class='accent'>النشامى</span>"></h1>
+      <p class="hero-subtitle" data-en="The Chivalrous Ones" data-ar="أبطال الأردن"></p>
+      <div class="hero-divider"></div>
+      <p class="hero-desc"
+         data-en="From their first match in 1953 to the grandest stage of all — the FIFA World Cup 2026. Jordan's national football team has written a story of relentless ambition, historic firsts, and the unbreakable spirit of a nation."
+         data-ar="من أول مباراة عام 1953 إلى أكبر بطولة في التاريخ — كأس العالم 2026. كتب المنتخب الأردني قصة طموح لا يتوقف، وإنجازات تاريخية، وروح لا تُكسر."></p>
+      <div class="hero-stats">
+        <div class="stat-cell">
+          <span class="stat-num">63</span>
+          <span class="stat-label" data-en="FIFA Ranking" data-ar="ترتيب الفيفا"></span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-num">5</span>
+          <span class="stat-label" data-en="Asian Cups" data-ar="كأس آسيا"></span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-num">'26</span>
+          <span class="stat-label" data-en="World Cup Debut" data-ar="أول كأس عالم"></span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="emblem-wrap">
+        <div class="emblem-ring"></div>
+        <div class="emblem-ring"></div>
+        <div class="emblem-ring"></div>
+        <div class="emblem-core">
+          <svg class="emblem-star-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- 7-pointed star for Jordan -->
+            <polygon points="50,5 61,35 95,35 68,57 79,91 50,70 21,91 32,57 5,35 39,35" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACHIEVEMENTS ── -->
+<section id="achievements">
+  <div class="section-inner">
+    <p class="section-eyebrow" data-en="A Nation's Journey" data-ar="مسيرة أمة"></p>
+    <h2 class="section-title" data-en="Historic Achievements" data-ar="الإنجازات التاريخية"></h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1953</div>
+        <div class="tl-title" data-en="The First Match" data-ar="المباراة الأولى"></div>
+        <p class="tl-body"
+           data-en="Jordan played its first-ever international match in Egypt, facing Syria in a 1–3 defeat. A humble beginning that planted the seeds of a football nation."
+           data-ar="خاض المنتخب الأردني أولى مبارياته الدولية في مصر أمام سوريا، وانتهت بخسارة 1-3. كانت بداية متواضعة زرعت بذور أمة كروية."></p>
+        <span class="tl-badge" data-en="Foundation" data-ar="التأسيس"></span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1997 & 1999</div>
+        <div class="tl-title" data-en="Arab Games Champions" data-ar="بطل دورة الألعاب العربية"></div>
+        <p class="tl-body"
+           data-en="Under coach Mohammad Awad, Jordan claimed back-to-back Arab Games football titles — in Beirut (1997) and on home soil in Amman (1999). The first major trophies in the team's history."
+           data-ar="تحت قيادة المدرب محمد عوض، توّج الأردن ببطولة دورة الألعاب العربية مرتين متتاليتين — في بيروت (1997) وعلى أرضه في عمّان (1999). أول الألقاب الكبرى في تاريخ المنتخب."></p>
+        <span class="tl-badge" data-en="🏆 Double Champions" data-ar="🏆 بطولتان"></span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2004</div>
+        <div class="tl-title" data-en="Asian Cup Debut — Quarter-Finals" data-ar="أول كأس آسيا — ربع النهائي"></div>
+        <p class="tl-body"
+           data-en="Under Egyptian coach Mahmoud El-Gohary, Jordan qualified for and debuted at the AFC Asian Cup in China, stunning stronger opponents to reach the quarter-finals. Jordan reached their highest-ever FIFA ranking of 37th — a record that stood for over a decade."
+           data-ar="تحت قيادة المدرب المصري محمود الجوهري، تأهل الأردن وشارك لأول مرة في كأس آسيا بالصين، وبلغ دور ربع النهائي. وصل الأردن إلى أعلى ترتيب له في تصنيف الفيفا عند المركز 37 — رقم ظل محفوراً لأكثر من عقد."></p>
+        <span class="tl-badge" data-en="Historic Debut" data-ar="ظهور تاريخي"></span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2011</div>
+        <div class="tl-title" data-en="Second Asian Cup — Quarter-Finals Again" data-ar="كأس آسيا الثانية — ربع النهائي مجدداً"></div>
+        <p class="tl-body"
+           data-en="Jordan returned to the AFC Asian Cup under coach Adnan Hamad, progressing from a group containing Japan, Saudi Arabia, and Syria to reach the quarter-finals once again — reinforcing their status as a consistent competitor."
+           data-ar="عاد الأردن إلى كأس آسيا بقيادة أدنان حمد، وتجاوز مجموعة ضمّت اليابان والسعودية وسوريا، ليصل إلى ربع النهائي مجدداً — مؤكداً مكانته كمنافس ثابت في آسيا."></p>
+        <span class="tl-badge" data-en="Quarter-Finals" data-ar="ربع النهائي"></span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2013–2014</div>
+        <div class="tl-title" data-en="Intercontinental Play-Off vs Uruguay" data-ar="ملحق القارات أمام أوروغواي"></div>
+        <p class="tl-body"
+           data-en="Jordan reached the AFC/CONMEBOL intercontinental play-off for the 2014 World Cup — the furthest any Jordanian team had gone in World Cup qualification. They faced Uruguay in a two-legged encounter, narrowly missing history."
+           data-ar="وصل الأردن إلى ملحق القارات بين الـ AFC والـ CONMEBOL للتأهل لمونديال 2014 — الأبعد في التاريخ الأردني. واجهوا أوروغواي على مباراتين، ليفوّتوا بأقل القليل صنع التاريخ."></p>
+        <span class="tl-badge" data-en="Intercontinental Playoff" data-ar="ملحق القارات"></span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2015</div>
+        <div class="tl-title" data-en="Third Asian Cup — Group Stage" data-ar="كأس آسيا الثالثة — دور المجموعات"></div>
+        <p class="tl-body"
+           data-en="At the Asian Cup in Australia, Jordan were drawn with rivals Iraq and Japan, plus debutants Palestine. A 1–0 loss to Iraq proved costly; despite a 5–1 win over Palestine (a four-goal haul from Hamza Al-Dardour), a 2–0 defeat to Japan sent Jordan home at the group stage for the first time."
+           data-ar="في كأس آسيا بأستراليا، وقع الأردن في مجموعة مع الغريم العراق واليابان، إلى جانب فلسطين المشاركة لأول مرة. كلّفته خسارة 1-0 أمام العراق كثيراً؛ وعلى الرغم من الفوز 5-1 على فلسطين (رباعية لحمزة الدردور)، أدت الهزيمة 2-0 أمام اليابان لخروج الأردن من دور المجموعات لأول مرة في تاريخه."></p>
+        <span class="tl-badge" data-en="Group Stage Exit" data-ar="خروج من المجموعات"></span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2019</div>
+        <div class="tl-title" data-en="Asian Cup — Beating Australia" data-ar="كأس آسيا — الفوز على أستراليا"></div>
+        <p class="tl-body"
+           data-en="At the 2019 Asian Cup in the UAE, Jordan topped their group unbeaten, defeating defending champions Australia 1–0 and China 2–0. They reached the Round of 16 before a penalty shootout heartbreak against Vietnam."
+           data-ar="في كأس آسيا 2019 بالإمارات، تصدّر الأردن مجموعته دون هزيمة، متغلباً على أستراليا الحاملة للقب 1-0 والصين 2-0. وصلوا لدور الـ16 قبل الخروج بركلات الترجيح أمام فيتنام."></p>
+        <span class="tl-badge" data-en="Group Winners" data-ar="صدارة المجموعة"></span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2024</div>
+        <div class="tl-title" data-en="AFC Asian Cup 2023 — Historic Final" data-ar="كأس آسيا 2023 — النهائي التاريخي"></div>
+        <p class="tl-body"
+           data-en="The defining moment of a generation. Under coach Hussein Ammouta, Jordan defeated Malaysia 4–0, drew with Bahrain, then dismantled Tajikistan (1–0) and Iraq (3–2 in added time) in the knockouts. The semi-final saw Al Nashama stun Asian giants South Korea 2–0 (goals from Yazan Al-Naimat and Musa Al-Tamari) to reach Jordan's first-ever Asian Cup final. They faced host Qatar and lost 1–3, but the achievement — and the joy across Jordan — was unprecedented."
+           data-ar="اللحظة التي ستُروى للأجيال. بقيادة حسين عموتة، فاز الأردن على ماليزيا 4-0، ثم تخطّى طاجيكستان (1-0) والعراق (3-2 في الوقت القاتل). في النصف النهائي، صدم النشامى عملاق آسيا كوريا الجنوبية 2-0 (أهداف يزن النعيمات وموسى التعمري) ليصل الأردن لأول نهائي في تاريخه. خسروا أمام قطر 1-3، لكن الإنجاز والفرحة لم تشهدهما المملكة من قبل."></p>
+        <span class="tl-badge" data-en="🥈 Runners-Up — First Final Ever" data-ar="🥈 الوصيف — أول نهائي في التاريخ"></span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2025</div>
+        <div class="tl-title" data-en="FIFA Arab Cup 2025 — Runners-Up" data-ar="كأس العرب 2025 — الوصيف"></div>
+        <p class="tl-body"
+           data-en="Under new coach Jamal Sellami, Jordan went on a stunning unbeaten run through the Arab Cup — defeating UAE (2–1), Kuwait (3–1), Egypt (3–0), Iraq (1–0), and Saudi Arabia (1–0) before falling to Morocco 2–3 in the final. Following this run, King Abdullah II granted Coach Sellami honorary Jordanian citizenship."
+           data-ar="بقيادة جمال السلامي، خاض الأردن مسيرة مشرّفة دون هزيمة في كأس العرب — فاز على الإمارات (2-1)، الكويت (3-1)، مصر (3-0)، العراق (1-0)، والسعودية (1-0)، ليخسر أمام المغرب 2-3 في النهائي. إثر هذا الإنجاز، منح الملك عبدالله الثاني المدرب السلامي الجنسية الأردنية تكريماً له."></p>
+        <span class="tl-badge" data-en="🥈 Arab Cup Runners-Up" data-ar="🥈 وصيف كأس العرب"></span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">June 5, 2025</div>
+        <div class="tl-title" data-en="FIRST FIFA WORLD CUP QUALIFICATION — EVER" data-ar="أول تأهل لكأس العالم في التاريخ"></div>
+        <p class="tl-body"
+           data-en="The greatest moment in Jordanian football history. A 3–0 away victory over Oman in Muscat secured Jordan's first-ever automatic FIFA World Cup qualification. Ali Olwan scored a hat-trick. The celebrations in Amman lasted for weeks. King Abdullah II watched from the Jordanian Embassy in London and took to social media: 'I wholeheartedly congratulate the sons and daughters of our dear people.' Jordan were drawn into Group J alongside reigning champions Argentina, Algeria, and Austria."
+           data-ar="أعظم لحظة في تاريخ كرة القدم الأردنية. انتصار 3-0 خارج الديار على عُمان في مسقط أهّل الأردن لكأس العالم للمرة الأولى في تاريخه. سجّل علي أولوين ثلاثية. والاحتفالات في عمّان امتدت لأسابيع. تابع الملك عبدالله الثاني المباراة من السفارة الأردنية في لندن وكتب: 'أهنئ أبناء وبنات شعبنا العزيز من أعماق قلبي.' وأُقرع للأردن في المجموعة J مع الأرجنتين والجزائر والنمسا."></p>
+        <span class="tl-badge" data-en="⭐ World Cup 2026 — Group J" data-ar="⭐ كأس العالم 2026 — المجموعة J"></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SQUAD ── -->
+<section id="squad">
+  <div class="section-inner">
+    <p class="section-eyebrow" data-en="The Starting Eleven" data-ar="التشكيلة الأساسية"></p>
+    <h2 class="section-title" data-en="Al Nashama's Warriors" data-ar="محاربو النشامى"></h2>
+
+    <!-- Pitch formation display -->
+    <div class="pitch-wrap">
+      <div class="pitch-lines">
+        <svg viewBox="0 0 520 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- outer rect -->
+          <rect x="20" y="20" width="480" height="760" fill="none" stroke="white" stroke-width="2"/>
+          <!-- halfway line -->
+          <line x1="20" y1="400" x2="500" y2="400" stroke="white" stroke-width="1.5"/>
+          <!-- centre circle -->
+          <circle cx="260" cy="400" r="80" fill="none" stroke="white" stroke-width="1.5"/>
+          <circle cx="260" cy="400" r="4" fill="white"/>
+          <!-- penalty areas (top = defensive end, bottom = attacking end) -->
+          <rect x="120" y="20" width="280" height="140" fill="none" stroke="white" stroke-width="1.5"/>
+          <rect x="120" y="640" width="280" height="140" fill="none" stroke="white" stroke-width="1.5"/>
+          <!-- goal areas -->
+          <rect x="200" y="20" width="120" height="55" fill="none" stroke="white" stroke-width="1.5"/>
+          <rect x="200" y="725" width="120" height="55" fill="none" stroke="white" stroke-width="1.5"/>
+          <!-- penalty spots -->
+          <circle cx="260" cy="110" r="3" fill="white"/>
+          <circle cx="260" cy="690" r="3" fill="white"/>
+        </svg>
+      </div>
+
+      <p class="pitch-formation-label" data-en="Formation: 3–4–2–1 (Sellami's system)" data-ar="التشكيل: 3-4-2-1 (نظام السلامي)"></p>
+
+      <!-- GK -->
+      <div class="pitch-row">
+        <div class="player-card" data-delay="0">
+          <div class="player-circle">1</div>
+          <div class="player-name" data-en="Yazeed Abulaila" data-ar="يزيد أبو ليلى"></div>
+          <div class="player-pos" data-en="GK" data-ar="حارس"></div>
+        </div>
+      </div>
+      <!-- CBs -->
+      <div class="pitch-row">
+        <div class="player-card" data-delay="100">
+          <div class="player-circle">5</div>
+          <div class="player-name" data-en="Husam Abu Dahab" data-ar="حسام أبو دهب"></div>
+          <div class="player-pos" data-en="CB" data-ar="مدافع"></div>
+        </div>
+        <div class="player-card" data-delay="150">
+          <div class="player-circle">4</div>
+          <div class="player-name" data-en="Abdallah Nasib" data-ar="عبدالله نصيب"></div>
+          <div class="player-pos" data-en="CB" data-ar="مدافع"></div>
+        </div>
+        <div class="player-card" data-delay="200">
+          <div class="player-circle">3</div>
+          <div class="player-name" data-en="Yazan Al-Arab" data-ar="يزن العرب"></div>
+          <div class="player-pos" data-en="CB" data-ar="مدافع"></div>
+        </div>
+      </div>
+      <!-- WBs + CMs -->
+      <div class="pitch-row">
+        <div class="player-card" data-delay="100">
+          <div class="player-circle captain">2<span class="captain-badge">©</span></div>
+          <div class="player-name" data-en="Ehsan Haddad" data-ar="إحسان حداد"></div>
+          <div class="player-pos" data-en="RWB" data-ar="ظهير"></div>
+        </div>
+        <div class="player-card" data-delay="150">
+          <div class="player-circle">8</div>
+          <div class="player-name" data-en="Rajaei Ayed" data-ar="رجائي عايد"></div>
+          <div class="player-pos" data-en="CM" data-ar="وسط"></div>
+        </div>
+        <div class="player-card" data-delay="200">
+          <div class="player-circle">6</div>
+          <div class="player-name" data-en="Mohammad Abu Hasheesh" data-ar="محمد أبو هاشش"></div>
+          <div class="player-pos" data-en="CDM" data-ar="وسط دفاعي"></div>
+        </div>
+        <div class="player-card" data-delay="250">
+          <div class="player-circle">7</div>
+          <div class="player-name" data-en="Noor Al-Rawabdeh" data-ar="نور الروابدة"></div>
+          <div class="player-pos" data-en="LWB" data-ar="ظهير"></div>
+        </div>
+      </div>
+      <!-- AMs -->
+      <div class="pitch-row">
+        <div class="player-card" data-delay="100">
+          <div class="player-circle">10</div>
+          <div class="player-name" data-en="Mousa Al-Tamari" data-ar="موسى التعمري"></div>
+          <div class="player-pos" data-en="RAM" data-ar="وسط هجومي"></div>
+        </div>
+        <div class="player-card" data-delay="180">
+          <div class="player-circle">11</div>
+          <div class="player-name" data-en="Mahmoud Al-Mardi" data-ar="محمود مرضي"></div>
+          <div class="player-pos" data-en="LAM" data-ar="وسط هجومي"></div>
+        </div>
+      </div>
+      <!-- ST -->
+      <div class="pitch-row">
+        <div class="player-card" data-delay="0">
+          <div class="player-circle">9</div>
+          <div class="player-name" data-en="Ali Olwan" data-ar="علي أولوين"></div>
+          <div class="player-pos" data-en="ST" data-ar="مهاجم"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Player Cards -->
+    <div class="player-grid">
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">1</span>
+          <div>
+            <div class="pcard-name" data-en="Yazeed Abulaila" data-ar="يزيد أبو ليلى"></div>
+            <span class="pcard-pos-tag" data-en="Goalkeeper" data-ar="حارس مرمى"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Al-Hussein SC · Jordan" data-ar="الحسين · الأردن"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">2</span>
+          <div>
+            <div class="pcard-name" data-en="Ehsan Haddad (C)" data-ar="إحسان حداد (قائد)"></div>
+            <span class="pcard-pos-tag" data-en="Right Wing-Back" data-ar="ظهير أيمن"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Al-Hussein SC · Jordan" data-ar="الحسين · الأردن"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">3</span>
+          <div>
+            <div class="pcard-name" data-en="Yazan Al-Arab" data-ar="يزن العرب"></div>
+            <span class="pcard-pos-tag" data-en="Centre-Back" data-ar="مدافع"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="FC Seoul · South Korea" data-ar="إف سي سيول · كوريا الجنوبية"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">4</span>
+          <div>
+            <div class="pcard-name" data-en="Abdallah Nasib" data-ar="عبدالله نصيب"></div>
+            <span class="pcard-pos-tag" data-en="Centre-Back" data-ar="مدافع"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Al-Zawraa · Iraq" data-ar="الزوراء · العراق"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">5</span>
+          <div>
+            <div class="pcard-name" data-en="Husam Abu Dahab" data-ar="حسام أبو دهب"></div>
+            <span class="pcard-pos-tag" data-en="Centre-Back" data-ar="مدافع"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Al-Faisaly · Jordan" data-ar="الفيصلي · الأردن"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">6</span>
+          <div>
+            <div class="pcard-name" data-en="Mohammad Abu Hasheesh" data-ar="محمد أبو هاشش"></div>
+            <span class="pcard-pos-tag" data-en="Defensive Mid" data-ar="وسط دفاعي"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Al-Karma SC · Iraq" data-ar="الكرمة · العراق"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">7</span>
+          <div>
+            <div class="pcard-name" data-en="Noor Al-Rawabdeh" data-ar="نور الروابدة"></div>
+            <span class="pcard-pos-tag" data-en="Left Wing-Back" data-ar="ظهير أيسر"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Selangor FC · Malaysia" data-ar="سيلانغور · ماليزيا"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">8</span>
+          <div>
+            <div class="pcard-name" data-en="Rajaei Ayed" data-ar="رجائي عايد"></div>
+            <span class="pcard-pos-tag" data-en="Central Mid" data-ar="وسط"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Al-Hussein SC · Jordan" data-ar="الحسين · الأردن"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">9</span>
+          <div>
+            <div class="pcard-name" data-en="Ali Olwan" data-ar="علي أولوين"></div>
+            <span class="pcard-pos-tag" data-en="Striker" data-ar="مهاجم"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Al-Sailiya · Qatar" data-ar="السيلية · قطر"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">10</span>
+          <div>
+            <div class="pcard-name" data-en="Mousa Al-Tamari ⭐" data-ar="موسى التعمري ⭐"></div>
+            <span class="pcard-pos-tag" data-en="Right Wing" data-ar="جناح أيمن"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Rennes · France (Ligue 1)" data-ar="رين · فرنسا (ليغ 1)"></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-top">
+          <span class="pcard-num">11</span>
+          <div>
+            <div class="pcard-name" data-en="Mahmoud Al-Mardi" data-ar="محمود مرضي"></div>
+            <span class="pcard-pos-tag" data-en="Left Attacking Mid" data-ar="وسط هجومي"></span>
+          </div>
+        </div>
+        <div class="pcard-club" data-en="Al-Hussein SC · Jordan" data-ar="الحسين · الأردن"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── COACH ── -->
+<section id="coach">
+  <div class="section-inner">
+    <p class="section-eyebrow" data-en="The Tactician" data-ar="العقل التكتيكي"></p>
+    <h2 class="section-title" data-en="Jamal Sellami" data-ar="جمال السلامي"></h2>
+    <div class="coach-grid">
+
+      <div class="coach-card-visual reveal">
+        <div class="coach-initials">JS</div>
+        <div class="coach-fullname" data-en="Jamal Sellami" data-ar="جمال السلامي"></div>
+        <div class="coach-title-tag" data-en="Head Coach — Jordan NT" data-ar="المدرب الرئيسي — المنتخب الأردني"></div>
+        <div class="coach-mini-stats">
+          <div class="cms-cell">
+            <div class="cms-val">Oct 6</div>
+            <div class="cms-lbl" data-en="Birthday (1970)" data-ar="ميلاده (1970)"></div>
+          </div>
+          <div class="cms-cell">
+            <div class="cms-val">38</div>
+            <div class="cms-lbl" data-en="Intl. Caps (Morocco)" data-ar="مباراة دولية (المغرب)"></div>
+          </div>
+          <div class="cms-cell">
+            <div class="cms-val">1998</div>
+            <div class="cms-lbl" data-en="World Cup Player" data-ar="لاعب كأس عالم"></div>
+          </div>
+          <div class="cms-cell">
+            <div class="cms-val">2026</div>
+            <div class="cms-lbl" data-en="World Cup Coach" data-ar="مدرب كأس عالم"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="coach-bio reveal">
+        <p data-en="Jamal Sellami was born on October 6, 1970, in the Derb Milan district of Casablanca, Morocco. He balanced academic excellence with a passion for football, earning his baccalaureate in the sciences while progressing through the youth ranks to become a professional midfielder."
+           data-ar="وُلد جمال السلامي في 6 أكتوبر 1970 في حي درب ميلان بالدار البيضاء، المغرب. جمع بين التفوق الأكاديمي وحب كرة القدم، إذ حصل على شهادة الباكالوريا في العلوم بينما صعد في صفوف الشباب ليصبح لاعطاً محترفاً في الوسط."></p>
+        <p data-en="As a player, Sellami represented Olympique Casablanca, Raja Casablanca, Maghreb Fez, and Beşiktaş in Turkey. He earned 38 caps for the Morocco national team and was part of the Atlas Lions' squad at the 1998 FIFA World Cup in France — his first World Cup experience, now replicated as a coach in 2026."
+           data-ar="كلاعب، مثّل السلامي أولمبيك الدار البيضاء، والرجاء البيضاوي، ومغرب فاس، وبشيكتاش التركي. شارك في 38 مباراة دولية مع المنتخب المغربي وكان جزءاً من المنتخب في كأس العالم 1998 بفرنسا — أول تجربة كأس عالم له، تتكرر الآن كمدرب في 2026."></p>
+        <p data-en="After retiring from playing at 33, Sellami built an impressive coaching career with Difaa El Jadida, Hassania Agadir, FUS Rabat, Morocco's U-17 and U-20 national teams, and Raja Casablanca — where he won the Moroccan League title in 2019–20 and was named Morocco's Coach of the Year in 2020 and 2023. He also led Morocco's CHAN team to the African Nations Championship title in 2018."
+           data-ar="بعد اعتزاله في سن 33، بنى السلامي مسيرة تدريبية مشرفة مع الدفاع الجديدي، وحسنية أكادير، والفتح الرباطي، ومنتخبَي المغرب للشباب وتحت 20، والرجاء البيضاوي — حيث فاز بالدوري المغربي 2019-20 وحُكّم أفضل مدرب في المغرب عامَي 2020 و2023. كما قاد المغرب للفوز ببطولة أمم أفريقيا للمحليين (CHAN) 2018."></p>
+        <p data-en="In June 2024, the Jordan Football Association appointed Sellami as head coach on a three-year contract. His tactical hallmark — a compact 3-4-2-1 that shifts to a near-impenetrable 5-4-1 out of possession — transformed Jordan into one of Asia's most disciplined sides. He is known as a data pioneer, one of the first African coaches to integrate complex tracking analytics into training and match preparation."
+           data-ar="في يونيو 2024، عيّنه الاتحاد الأردني مدرباً للمنتخب الأول بعقد لثلاث سنوات. بصمته التكتيكية — 3-4-2-1 المدمج الذي يتحول إلى 5-4-1 شبه منيع خارج الكرة — حوّل الأردن لأكثر الفرق الآسيوية انضباطاً. يُعدّ رائداً في تحليل البيانات، وأحد أوائل المدربين الأفارقة الذين وظّفوا إحصاءات التتبع المعقدة في التدريب والتحضير للمنافسين."></p>
+
+        <ul class="coach-achievements">
+          <li data-en="Led Jordan to first-ever FIFA World Cup qualification (2025) — 3–0 away win over Oman." data-ar="قاد الأردن لأول تأهل لكأس العالم في التاريخ (2025) — فوز 3-0 خارجياً على عُمان."></li>
+          <li data-en="Guided Jordan to the 2025 FIFA Arab Cup Final (runners-up), going unbeaten vs UAE, Kuwait, Egypt, Iraq & Saudi Arabia." data-ar="قاد الأردن لنهائي كأس العرب 2025 (الوصيف)، دون هزيمة أمام الإمارات والكويت ومصر والعراق والسعودية."></li>
+          <li data-en="Granted honorary Jordanian citizenship by Royal Decree from King Abdullah II — a testament to his historic contribution." data-ar="مُنح الجنسية الأردنية الفخرية بمرسوم ملكي من الملك عبدالله الثاني — تقديراً لإسهامه التاريخي."></li>
+          <li data-en="CHAN Champion 2018 with Morocco. Moroccan League winner 2019–20 with Raja Casablanca. Coach of the Year (Morocco) 2020 & 2023." data-ar="بطل CHAN 2018 مع المغرب. بطل الدوري المغربي 2019-20 مع الرجاء. أفضل مدرب في المغرب عامَي 2020 و2023."></li>
+          <li data-en="Preferred formation: 3–4–2–1 transitioning to 5–4–1 out of possession. Philosophy: defensive solidity + lightning counter-attacks." data-ar="تشكيله المفضل: 3-4-2-1 يتحول إلى 5-4-1 بدون الكرة. فلسفته: صلابة دفاعية + هجمات مرتدة خاطفة."></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORLD CUP BANNER ── -->
+<section id="worldcup">
+  <div class="section-inner" style="text-align:center; position:relative; z-index:2;">
+    <p class="wc-eyebrow" data-en="Historic Debut · Group J" data-ar="أول مشاركة · المجموعة J"></p>
+    <h2 class="wc-title" data-en="FIFA World Cup 2026" data-ar="كأس العالم فيفا 2026"></h2>
+    <p class="wc-sub"
+       data-en="After 73 years of international football, Al Nashama stand on the greatest stage on Earth. The 2026 FIFA World Cup in the United States, Canada, and Mexico — Jordan's debut, their dream, their destiny."
+       data-ar="بعد 73 عاماً من كرة القدم الدولية، يقف النشامى على أعظم ملعب في الأرض. كأس العالم 2026 في الولايات المتحدة وكندا والمكسيك — أول مشاركة، الحلم، والقدر."></p>
+    <div class="wc-group-box">
+      <div class="wc-group-item highlight">🇯🇴 <span data-en="Jordan" data-ar="الأردن"></span></div>
+      <div class="wc-group-item">🇦🇷 <span data-en="Argentina" data-ar="الأرجنتين"></span></div>
+      <div class="wc-group-item">🇩🇿 <span data-en="Algeria" data-ar="الجزائر"></span></div>
+      <div class="wc-group-item">🇦🇹 <span data-en="Austria" data-ar="النمسا"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand" data-en="Al Nashama — Jordan NT" data-ar="النشامى — المنتخب الأردني"></div>
+      <div class="footer-tagline" data-en="The Chivalrous Ones · Since 1953" data-ar="النشامى · منذ عام 1953"></div>
+    </div>
+    <div class="footer-credit">
+      <div class="credit-label" data-en="Created by" data-ar="تم الإنشاء بواسطة"></div>
+      <div class="credit-name" data-en="Ali" data-ar="علي"></div>
+      <div class="credit-sub" data-en="The Trainee · 2026" data-ar="المتدرب · 2026"></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Language System ──
+  const langBtn = document.getElementById('langToggle');
+  const body = document.body;
+
+  function setLang(lang) {
+    body.lang = lang;
+    body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    langBtn.textContent = lang === 'ar' ? 'English' : 'عربي';
+
+    document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (text !== null) {
+        // use innerHTML so HTML tags like <span> work in hero title
+        if (el.tagName === 'H1' || el.classList.contains('hero-title')) {
+          el.innerHTML = text;
+        } else {
+          el.textContent = text;
+        }
+      }
+    });
+
+    localStorage.setItem('nashama-lang', lang);
+  }
+
+  langBtn.addEventListener('click', () => {
+    setLang(body.lang === 'ar' ? 'en' : 'ar');
+  });
+
+  // Init saved lang
+  const saved = localStorage.getItem('nashama-lang');
+  if (saved) setLang(saved);
+  else setLang('en');
+
+  // ── Scroll Reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.tl-item, .pcard, .reveal').forEach(el => observer.observe(el));
+
+  // Stagger player cards in pitch
+  const pitchCards = document.querySelectorAll('.player-card');
+  const pitchObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay || 0);
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  pitchCards.forEach(c => pitchObserver.observe(c));
+
+  // Stagger pcard items
+  const pcards = document.querySelectorAll('.pcard');
+  const pcardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.05 });
+  pcards.forEach(c => pcardObserver.observe(c));
+
+  // ── Smooth active nav highlighting ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--red)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
